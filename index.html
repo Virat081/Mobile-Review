@@ -1,0 +1,286 @@
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mobile Review Hub - Dark Mode</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  @layer base {
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    a {
+      color: #818cf8; /* indigo-400 */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #6366f1; /* indigo-500 */
+      outline: none;
+    }
+    header,
+    footer {
+      background-color: #1f2937; /* gray-800 */
+      color: #d1d5db; /* gray-300 */
+      border-color: #374151; /* gray-700 */
+    }
+    nav a {
+      color: #d1d5db;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #818cf8;
+    }
+    input,
+    button {
+      background-color: #1f2937;
+      color: #e0e0e0;
+      border-color: #374151;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    input::placeholder {
+      color: #9ca3af; /* gray-400 */
+      opacity: 1;
+    }
+    input:focus,
+    button:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 2px #6366f1;
+      background-color: #111827; /* gray-900 */
+    }
+  }
+
+  /* Card layout for mobiles */
+  @layer components {
+    .card {
+      @apply bg-gray-900 rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-indigo-600/50;
+      border: 1px solid #374151; /* gray-700 */
+    }
+    .card img {
+      @apply w-full h-48 object-cover;
+      border-bottom: 1px solid #374151;
+    }
+    .card-content {
+      @apply p-5;
+    }
+    .card-title {
+      @apply text-xl font-semibold text-indigo-400 mb-2;
+    }
+    .card-desc {
+      @apply text-gray-300 mb-4;
+    }
+    .card-link {
+      @apply inline-block font-semibold text-indigo-500 hover:text-indigo-400 transition;
+    }
+    .card-link i {
+      @apply ml-1;
+    }
+  }
+
+  /* Scrollbar styling for dark mode */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #6366f1;
+    border-radius: 10px;
+    border: 2px solid #1f2937;
+  }
+
+  /* Mobile menu background override */
+  #mobile-menu {
+    background-color: #1f2937;
+    border-top-color: #374151;
+  }
+</style>
+</head>
+<body class="flex flex-col min-h-screen">
+  <!-- Header -->
+  <header class="shadow-md sticky top-0 z-50">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16"
+    >
+      <a class="text-2xl font-semibold text-indigo-400 flex items-center" href="#"
+        ><img
+          alt="Mobile Review Hub logo, stylized letter M in blue"
+          class="mr-2"
+          height="32"
+          src="https://storage.googleapis.com/a1aa/image/84ee1ad2-e1c6-440a-49df-aa2bcbd895d0.jpg"
+          width="32"
+        />
+        Mobile Review Hub</a
+      >
+      <nav class="hidden md:flex space-x-8 font-medium">
+        <a class="hover:text-indigo-300 transition" href="#">Home</a>
+        <a class="hover:text-indigo-300 transition" href="#">Reviews</a>
+        <a class="hover:text-indigo-300 transition" href="#">News</a>
+        <a class="hover:text-indigo-300 transition" href="#">Guides</a>
+        <a class="hover:text-indigo-300 transition" href="#">Contact</a>
+      </nav>
+      <button
+        aria-label="Open menu"
+        class="md:hidden hover:text-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        id="mobile-menu-button"
+      >
+        <i class="fas fa-bars fa-lg"></i>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <nav
+      aria-label="Mobile menu"
+      class="hidden md:hidden border-t"
+      id="mobile-menu"
+    >
+      <a
+        class="block px-4 py-3 hover:bg-indigo-900 hover:text-indigo-300 font-medium"
+        href="#"
+        >Home</a
+      >
+      <a
+        class="block px-4 py-3 hover:bg-indigo-900 hover:text-indigo-300 font-medium"
+        href="#"
+        >Reviews</a
+      >
+      <a
+        class="block px-4 py-3 hover:bg-indigo-900 hover:text-indigo-300 font-medium"
+        href="#"
+        >News</a
+      >
+      <a
+        class="block px-4 py-3 hover:bg-indigo-900 hover:text-indigo-300 font-medium"
+        href="#"
+        >Guides</a
+      >
+      <a
+        class="block px-4 py-3 hover:bg-indigo-900 hover:text-indigo-300 font-medium"
+        href="#"
+        >Contact</a
+      >
+    </nav>
+  </header>
+  <!-- Main content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Search bar -->
+    <section class="mb-10">
+      <form
+        class="max-w-xl mx-auto flex items-center border rounded-lg overflow-hidden shadow-sm focus-within:ring-2 focus-within:ring-indigo-400 border-gray-700"
+      >
+        <input
+          aria-label="Search mobile phones, brands, reviews"
+          class="flex-grow px-4 py-3 placeholder-gray-400 focus:outline-none"
+          id="search"
+          name="search"
+          placeholder="Search for mobile phones, brands, reviews..."
+          type="search"
+        />
+        <button
+          aria-label="Submit search"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 flex items-center justify-center"
+          type="submit"
+        >
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+    </section>
+    <!-- Featured Mobiles Section -->
+    <section>
+      <h2 class="text-3xl font-semibold mb-6 text-center md:text-left text-indigo-400">
+        Featured Mobiles
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="card">
+          <img
+            alt="Samsung Galaxy S23 Ultra smartphone front view with sleek black design and curved edges"
+            height="400"
+            src="https://storage.googleapis.com/a1aa/image/38938e21-1004-449a-16a3-1f5f24fe5d80.jpg"
+            width="600"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Samsung Galaxy S23 Ultra</h3>
+            <p class="card-desc">
+              Experience the ultimate flagship with a 200MP camera, 5000mAh
+              battery, and stunning AMOLED display.
+            </p>
+            <a
+              aria-label="Read review of Samsung Galaxy S23 Ultra"
+              class="card-link"
+              href="#"
+              >Read Review <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </article>
+        <article class="card">
+          <img
+            alt="Apple iPhone 14 Pro Max smartphone front view with silver finish and dynamic island display"
+            height="400"
+            src="https://storage.googleapis.com/a1aa/image/f83555cf-30d0-4165-9c65-5f69d2b4dc2a.jpg"
+            width="600"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Apple iPhone 14 Pro Max</h3>
+            <p class="card-desc">
+              Discover the power of the A16 Bionic chip, ProMotion display, and
+              advanced camera system.
+            </p>
+            <a
+              aria-label="Read review of Apple iPhone 14 Pro Max"
+              class="card-link"
+              href="#"
+              >Read Review <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </article>
+        <article class="card">
+          <img
+            alt="Google Pixel 7 Pro smartphone front view with white finish and clean minimal design"
+            height="400"
+            src="https://storage.googleapis.com/a1aa/image/4c8b70ae-13ca-446e-642c-67bfac6f2b64.jpg"
+            width="600"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Google Pixel 7 Pro</h3>
+            <p class="card-desc">
+              Enjoy the best of Android with Tensor G2 chip, excellent camera
+              AI, and smooth 120Hz display.
+            </p>
+            <a
+              aria-label="Read review of Google Pixel 7 Pro"
+              class="card-link"
+              href="#"
+              >Read Review <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </article>
+        <article class="card">
+          <img
+            alt="OnePlus 11 smartphone front view with glossy green finish and slim bezels"
+            height="400"
+            src="https://storage.googleapis.com/a1aa/image/5557eb5f-9f92-4903-2067-f91400914c60.jpg"
+            width="600"
+          />
+          <div class="card-content">
+            <h3 class="card-title">OnePlus 11</h3>
+            <p class="card-desc">
+              Flagship performance with Snapdragon 8 Gen 2, fast charging, and
+              Hasselblad tuned cameras.
+            </p>
+            <a
+              aria-label="Read review of OnePlus 11"
+              class="card-link
